@@ -5,7 +5,7 @@
 
 const extent = [0, 0, 5080, 7697];
 const projection = new ol.proj.Projection({
-  code: 'xkcd-image',
+  code: 'pixels',
   units: 'pixels',
   extent: extent,
 });
@@ -15,18 +15,18 @@ const map = new ol.Map({
   // interactions: ol.interaction.defaultInteractions.extend([new ol.interaction.DragRotateAndZoom()]),
   layers: [
 
-    // new ol.layer.Tile({
-    //     source: new ol.source.ImageStatic({
-    //             url: 'maps/{z}/{x}/{y}.png'
-    //     })
+    new ol.layer.Tile({
+        source: new ol.source.TileImage({
+                url: 'maps/{z}/{y}/{x}.png'
+        })
     //suttapitaka-min2
-    new ol.layer.Image({
-      source: new ol.source.ImageStatic({
-        attributions: '© <a href="https://xkcd.com/license.html">xkcd</a>',
-        url: 'sutta.png',
-        projection: projection,
-        imageExtent: extent,
-      }),
+    // new ol.layer.Image({
+    //   source: new ol.source.ImageStatic({
+    //     attributions: '© <a href="https://xkcd.com/license.html">xkcd</a>',
+    //     url: 'sutta.png',
+    //     projection: projection,
+    //     imageExtent: extent,
+    //   }),
 
     }),
   ],
@@ -34,6 +34,8 @@ const map = new ol.Map({
   view: new ol.View({
     projection: projection,
     center: ol.extent.getCenter(extent),
+    // center: [5080, 7697],
+    // center: ol.proj.transform([0, 0, 1500, 3000]),
     zoom: 2,
     maxZoom: 8,
   }),
