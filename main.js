@@ -33,8 +33,8 @@ const map = new ol.Map({
   target: 'map',
   view: new ol.View({
     projection: projection,
-    center: ol.extent.getCenter(extent),
-    // center: [5080, 7697],
+    // center: ol.extent.getCenter(extent),
+    center: [5080/1.3 , 7697/2],
     // center: ol.proj.transform([0, 0, 1500, 3000]),
     zoom: 2,
     maxZoom: 8,
