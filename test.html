@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>leaflet-rotate.js</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+  <!-- Leaflet JS / CSS -->
+  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet-src.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css">
+
+  <!-- Leaflet-Rotate -->
+  <script src="https://unpkg.com/leaflet-rotate@0.1.4/dist/leaflet-rotate-src.js"></script>
+
+
+
+  <style>
+    #map {
+      width: 100%;
+      height: 100vh;
+      border: 0px solid #ccc;
+      //margin-bottom: 10px;
+      background-color: rgba(255, 0, 0, 0.0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="map"></div>
+
+
+
+
+  <script>
+    // var esri = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    //   id: 'mapbox.streets',
+    //   maxZoom: 24,
+    //   maxNativeZoom: 18,
+    //   attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+    // });
+    //
+    //
+    // var map = L.map('map', {
+    //   center: [55, 10],
+    //   zoom: 2,
+    //   layers: [esri],
+    //   // worldCopyJump: true,
+    //   rotate: true,
+    //   touchRotate: true,
+    //   rotateControl: {
+    //     closeOnZeroBearing: false
+    //   },
+    //   bearing: 30,
+    // });
+
+    // map.setBearing(30);
+    // map.touchRotate.enable();
+
+    var map = L.map('map', {
+      rotate: true,
+      touchRotate: true,
+      rotateControl: {
+        closeOnZeroBearing: false
+      }
+
+    });
+
+    L.tileLayer('gmapdir11/{z}/{y}/{x}.png', {
+      noWrap: true,
+      //maxNativeZoom: 5, // OSM max available zoom is at 19.
+      maxZoom: 6,
+      minZoom: 2
+
+      // attribution: 'Some Attribution'
+    }).addTo(map);
+
+    map.setView([0, 0], 0);
+
+
+
+
+
+    // Display some debug info
+  </script>
+
+</body>
+
+</html>
