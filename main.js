@@ -3,7 +3,13 @@
 // coordinates directly to map coordinates, so we create a projection that uses
 // the image extent in pixels.
 
-const extent = [0, 0, 5080, 7697];
+
+const width = 1;
+const height = 1;
+// const width = 5080 + 3000;
+// const height = 7697;
+
+const extent = [0, 0, width, height];
 const projection = new ol.proj.Projection({
   code: 'pixels',
   units: 'pixels',
@@ -16,6 +22,7 @@ const map = new ol.Map({
   layers: [
 
     new ol.layer.Tile({
+        // extent: extent,
         source: new ol.source.TileImage({
                 url: 'maps/{z}/{y}/{x}.png'
         })
@@ -33,12 +40,15 @@ const map = new ol.Map({
   target: 'map',
   view: new ol.View({
     projection: projection,
-    // center: ol.extent.getCenter(extent),
-    center: [5080/1.3 , 7697/2],
+    center: ol.extent.getCenter(extent),
+    // center: [width/2 , height/2],
     // center: ol.proj.transform([0, 0, 1500, 3000]),
     zoom: 2,
-    maxZoom: 8,
+    maxZoom: 6,
   }),
+  interactions: ol.interaction.defaults({altShiftDragRotate: false}).extend([
+      new ol.interaction.DragRotate({condition: ol.events.condition.platformModifierKeyOnly})
+   ])
 });
 
 ////////// example 2 ////////////
