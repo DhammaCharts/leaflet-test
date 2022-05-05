@@ -24,7 +24,7 @@ const map = new ol.Map({
     new ol.layer.Tile({
         // extent: extent,
         source: new ol.source.TileImage({
-                url: 'maps/{z}/{y}/{x}.png'
+                url: 'PNGtiles/{z}/{y}/{x}.png'
         })
     //suttapitaka-min2
     // new ol.layer.Image({
@@ -44,7 +44,7 @@ const map = new ol.Map({
     // center: [width/2 , height/2],
     // center: ol.proj.transform([0, 0, 1500, 3000]),
     zoom: 2,
-    maxZoom: 6,
+    maxZoom: 7,
   }),
   interactions: ol.interaction.defaults({altShiftDragRotate: false}).extend([
       new ol.interaction.DragRotate({condition: ol.events.condition.platformModifierKeyOnly})
